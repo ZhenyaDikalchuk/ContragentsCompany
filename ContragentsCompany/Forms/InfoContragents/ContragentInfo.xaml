@@ -1,0 +1,43 @@
+﻿<Window x:Class="ContragentsCompany.Forms.InfoContragents.ContragentInfoForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContragentsCompany.Forms.InfoContragents"
+        mc:Ignorable="d"
+        Title="ContragentInfoForm" Height="600" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid x:Name="Grid1" Height="28" Margin="0,65,0,0" VerticalAlignment="Top">
+            <Label x:Name="lSName" Content="Скорочене ім'я:" Margin="6,0,0,0" Width="130" HorizontalAlignment="Left"/>
+            <TextBox x:Name="tbShortName" Height="23" Margin="139,0,6,0" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="Grid2" Height="28" Margin="0,98,0,0" VerticalAlignment="Top">
+            <Label x:Name="lERPOU" Content="ЕДРПОУ:" Margin="6,0,0,0" Width="130" HorizontalAlignment="Left"/>
+            <TextBox x:Name="tbEDRPOU" Height="23" Margin="139,0,6,0" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" VerticalContentAlignment="Center"/>
+        </Grid>
+        <GroupBox x:Name="gbAddress" Header="Адреса" Margin="0,131,0,0" VerticalAlignment="Top" Padding="0,3,0,0">
+            <TextBox x:Name="tbAddress" Margin="0" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Height="40" IsReadOnly="True"/>
+        </GroupBox>
+        <Grid x:Name="Grid2_Copy" Height="28" Margin="6,202,-6,0" VerticalAlignment="Top">
+            <Label x:Name="lBoss" Content="Керівник:" Margin="6,0,0,0" Width="130" HorizontalAlignment="Left"/>
+            <TextBox x:Name="tbBoss" Height="23" Margin="139,0,6,0" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="Grid2_Copy1" Height="28" Margin="6,235,-6,0" VerticalAlignment="Top">
+            <Label x:Name="lKVED" Content="КВЕД:" Margin="6,0,0,0" Width="130" HorizontalAlignment="Left"/>
+            <TextBox x:Name="tbKVED" Height="23" Margin="139,0,6,0" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" VerticalContentAlignment="Center"/>
+        </Grid>
+        <Grid x:Name="Grid2_Copy2" Height="28" Margin="6,268,-6,0" VerticalAlignment="Top">
+            <Label x:Name="lStan" Content="Стан:" Margin="6,0,0,0" Width="130" HorizontalAlignment="Left"/>
+            <TextBox x:Name="tbStan" Height="23" Margin="139,0,6,0" TextWrapping="Wrap" Text="TextBox" IsReadOnly="True" VerticalContentAlignment="Center"/>
+        </Grid>
+        <GroupBox x:Name="gbFounders" Header="Засновники" Margin="0,301,0,50" Padding="0,3,0,0">
+            <ListBox x:Name="lbFounders" Margin="0"/>
+        </GroupBox>
+        <Grid x:Name="Grid1_Copy" Height="50" Margin="0,10,0,0" VerticalAlignment="Top">
+            <TextBlock x:Name="tbComName" Margin="0" TextWrapping="WrapWithOverflow" Text="TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+        </Grid>
+        <Button x:Name="bСhange" Content="Змінити запис" Margin="0,526,6,0" VerticalAlignment="Top" Width="100" Height="25" HorizontalAlignment="Right" Click="bСhange_Click"/>
+        <Button x:Name="bMap" Content="Показати на карті" Margin="6,526,0,0" Width="120" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" Click="bMap_Click"/>
+
+    </Grid>
+</Window>
