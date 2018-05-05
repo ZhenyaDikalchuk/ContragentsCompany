@@ -38,14 +38,22 @@
                     <Label x:Name="lCity" Content="Населений пункт*:" Margin="0" HorizontalAlignment="Left" Width="149"/>
                     <TextBox x:Name="tbCity" Height="23" Margin="114,2,0,2" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Width="528" HorizontalAlignment="Right"/>
                 </Grid>
-                <Grid x:Name="Grid2_Copy4" Height="28" Margin="0,84,0,0" VerticalAlignment="Top">
+                <Grid x:Name="Grid2_Copy8" Height="28" Margin="0,84,0,0" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lMicrorayon" Content="Мікрорайон:" Margin="0" HorizontalAlignment="Left" Width="149"/>
+                    <TextBox x:Name="tbMicrorayon" Height="23" Margin="114,2,0,2" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Width="528" HorizontalAlignment="Right"/>
+                </Grid>
+                <Grid x:Name="Grid2_Copy4" Height="28" Margin="0,112,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="lStreet" Content="Вулиця*:" Margin="0" HorizontalAlignment="Left" Width="149"/>
                     <TextBox x:Name="tbStreet" Height="23" Margin="114,2,0,2" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Width="528" HorizontalAlignment="Right"/>
                 </Grid>
-                <Grid x:Name="Grid2_Copy5" Height="28" Margin="0,112,0,0" VerticalAlignment="Top">
+                <Grid x:Name="Grid2_Copy5" Height="28" Margin="0,140,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -56,15 +64,15 @@
                 </Grid>
             </Grid>
         </GroupBox>
-        <Grid x:Name="Grid1_Copy" Height="28" Margin="0,298,0,0" VerticalAlignment="Top">
+        <Grid x:Name="Grid1_Copy" Height="28" Margin="0,326,0,0" VerticalAlignment="Top">
             <Label x:Name="lBoss" Content="Керівник:" Margin="6,0,0,0" HorizontalAlignment="Left" Width="149"/>
             <TextBox x:Name="tbBoss" Height="23" Margin="120,0,6,0" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Width="528" HorizontalAlignment="Right"/>
         </Grid>
-        <Grid x:Name="Grid1_Copy1" Height="28" Margin="0,364,0,0" VerticalAlignment="Top">
+        <Grid x:Name="Grid1_Copy1" Height="28" Margin="0,382,0,0" VerticalAlignment="Top">
             <Label x:Name="lStan" Content="Стан*:" Margin="6,0,0,0" HorizontalAlignment="Left" Width="149"/>
             <TextBox x:Name="tbStan" Height="23" Margin="120,0,6,0" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Width="528" HorizontalAlignment="Right"/>
         </Grid>
-        <GroupBox x:Name="groupBox1" Header="Засновники" Margin="0,397,0,0" VerticalAlignment="Top" Padding="0">
+        <GroupBox x:Name="groupBox1" Header="Засновники" Margin="0,415,0,0" VerticalAlignment="Top" Padding="0">
             <Grid Margin="0">
                 <Grid x:Name="Grid2_Copy6" Height="28" Margin="0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
@@ -82,9 +90,9 @@
                 </Grid>
             </Grid>
         </GroupBox>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="6,490,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"><Run Text="Поля, помічені '*', "/><Run Text="обов'язкові для заповнення"/><Run Text="!"/></TextBlock>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="6,499,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"><Run Text="Поля, помічені '*', "/><Run Text="обов'язкові для заповнення"/><Run Text="!"/></TextBlock>
         <Button x:Name="bCreate" Content="Створити запис" Margin="528,525,0,0" VerticalAlignment="Top" Width="150" Height="30" HorizontalAlignment="Left" Click="bCreate_Click"/>
-        <Grid x:Name="Grid1_Copy2" Height="28" Margin="0,331,0,0" VerticalAlignment="Top">
+        <Grid x:Name="Grid1_Copy2" Height="28" Margin="0,354,0,0" VerticalAlignment="Top">
             <Label x:Name="lKVED" Content="КВЕД:" Margin="6,0,0,0" HorizontalAlignment="Left" Width="149"/>
             <TextBox x:Name="tbKVED" Height="23" Margin="120,0,6,0" TextWrapping="Wrap" Text="TextBox" VerticalContentAlignment="Center" Width="528" HorizontalAlignment="Right"/>
         </Grid>

@@ -36,6 +36,7 @@ namespace ContragentsCompany.Forms.CreateContragents
             tbRegion.Text = "";
             tbRayon.Text = "";
             tbCity.Text = "";
+            tbMicrorayon.Text = "";
             tbStreet.Text = "";
             tbBuildNumb.Text = "";
             tbPostcode.Text = "";
@@ -65,7 +66,7 @@ namespace ContragentsCompany.Forms.CreateContragents
         //create Record
         private void bCreate_Click(object sender, RoutedEventArgs e)
         {
-            string idRegion = "", idRayon = "", idCity = "", idStreet = "", idBuilding = "", idAddress = "", idStan = "", idCompany = "";
+            string idRegion = "", idRayon = "", idCity = "", idMicrorayon = "", idStreet = "", idBuilding = "", idAddress = "", idStan = "", idCompany = "";
             if (tbComName.Text != "" && tbEDRPOU.Text != "" && tbRegion.Text != "" && tbRayon.Text != "" && tbCity.Text != "" && tbStreet.Text != "" && tbBuildNumb.Text != "" &&
                 tbPostcode.Text != "" && tbStan.Text != "")
             {
@@ -150,6 +151,36 @@ namespace ContragentsCompany.Forms.CreateContragents
                     MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
+                if (tbMicrorayon.Text != "")
+                {
+                    //insert Microrayon
+                    command = new SQLiteCommand("INSERT INTO Microrayon (MicroRayonName, id_City) SELECT '" + tbMicrorayon.Text + "' name, '" + idCity + "' idCity" +
+                        " WHERE NOT EXISTS(SELECT 1 FROM Microrayon WHERE MicroRayonName = name and id_City = idCity)", connection);
+                    try
+                    {
+                        dataReader = command.ExecuteReader();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    //get id Microrayon
+                    command = new SQLiteCommand("select id from Microrayon where MicroRayonName = '" + tbMicrorayon.Text + "' and id_City = '" + idCity + "'", connection);
+                    try
+                    {
+                        dataReader = command.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            idMicrorayon = dataReader["id"].ToString();
+                        }
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
                 //insert Street
                 command = new SQLiteCommand("INSERT INTO Street (StreetName, id_City) SELECT '" + tbStreet.Text + "' name, '" + idCity +
                     "' idCity WHERE NOT EXISTS(SELECT 1 FROM Street WHERE StreetName = name and id_City = idCity)", connection);
@@ -205,33 +236,68 @@ namespace ContragentsCompany.Forms.CreateContragents
                     MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                //insert Address
-                command = new SQLiteCommand("INSERT INTO Address (id_Region, id_Rayon, id_City, id_Street, id_Building) SELECT '" + idRegion + "' idRegion, '" + idRayon +
-                    "' idRayon, '" + idCity + "' idCity, '" + idStreet + "' idStreet, '" + idBuilding + "' idBuilding WHERE NOT EXISTS(SELECT 1 FROM Address WHERE " +
-                    "id_Region = idRegion and id_Rayon = idRayon and id_City = idCity and id_Street = idStreet and id_Building = idBuilding)", connection);
-                try
+                if (tbMicrorayon.Text == "")
                 {
-                    dataReader = command.ExecuteReader();
-                }
-                catch (SQLiteException ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                //get id Address
-                command = new SQLiteCommand("select id from Address where id_Region = '" + idRegion + "' and id_Rayon = '" + idRayon + "' and id_City = '" + idCity +
-                    "' and id_Street = '" + idStreet + "' and id_Building = '" + idBuilding + "'", connection);
-                try
-                {
-                    dataReader = command.ExecuteReader();
-                    while (dataReader.Read())
+                    //insert Address
+                    command = new SQLiteCommand("INSERT INTO Address (id_Region, id_Rayon, id_City, id_Street, id_Building) SELECT '" + idRegion + "' idRegion, '" + idRayon +
+                        "' idRayon, '" + idCity + "' idCity, '" + idStreet + "' idStreet, '" + idBuilding + "' idBuilding WHERE NOT EXISTS(SELECT 1 FROM Address WHERE " +
+                        "id_Region = idRegion and id_Rayon = idRayon and id_City = idCity and id_Street = idStreet and id_Building = idBuilding)", connection);
+                    try
                     {
-                        idAddress = dataReader["id"].ToString();
+                        dataReader = command.ExecuteReader();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    //get id Address
+                    command = new SQLiteCommand("select id from Address where id_Region = '" + idRegion + "' and id_Rayon = '" + idRayon + "' and id_City = '" + idCity +
+                        "' and id_Street = '" + idStreet + "' and id_Building = '" + idBuilding + "'", connection);
+                    try
+                    {
+                        dataReader = command.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            idAddress = dataReader["id"].ToString();
+                        }
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                catch (SQLiteException ex)
+                else if (tbMicrorayon.Text != "")
                 {
-                    MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    //insert Address
+                    command = new SQLiteCommand("INSERT INTO Address (id_Region, id_Rayon, id_City, id_Microrayon, id_Street, id_Building) SELECT '" + idRegion + 
+                        "' idRegion, '" + idRayon + "' idRayon, '" + idCity + "' idCity, '" + idMicrorayon + "' idMicrorayon, '" + idStreet + "' idStreet, '" + idBuilding + 
+                        "' idBuilding WHERE NOT EXISTS(SELECT 1 FROM Address WHERE " + "id_Region = idRegion and id_Rayon = idRayon and id_City = idCity" + 
+                        " and id_Street = idStreet and id_Building = idBuilding)", connection);
+                    try
+                    {
+                        dataReader = command.ExecuteReader();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    //get id Address
+                    command = new SQLiteCommand("select id from Address where id_Region = '" + idRegion + "' and id_Rayon = '" + idRayon + "' and id_City = '" + idCity +
+                        "' and id_Street = '" + idStreet + "' and id_Building = '" + idBuilding + "'", connection);
+                    try
+                    {
+                        dataReader = command.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            idAddress = dataReader["id"].ToString();
+                        }
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ResourceAssembly.GetName().Name, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
 
                 //insert Stan
