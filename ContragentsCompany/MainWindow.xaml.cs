@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Data.SQLite;
+using System.Diagnostics;
+using System.Windows;
 using ContragentsCompany.Forms.CreateContragents;
 using ContragentsCompany.Forms.DataGraphics;
 using ContragentsCompany.Forms.InfoContragents;
@@ -48,10 +50,11 @@ namespace ContragentsCompany
             this.Hide();
         }
 
-        //close program
+        ////close program
         private void MainForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+            Process.GetCurrentProcess().Kill();
         }
-    }
+    }   
 }
